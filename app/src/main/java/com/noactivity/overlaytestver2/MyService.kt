@@ -86,13 +86,16 @@ class MyService: Service()
         layoutParams = WindowManager.LayoutParams(
             WindowManager.LayoutParams.WRAP_CONTENT,
             WindowManager.LayoutParams.WRAP_CONTENT,
-            WindowManager.LayoutParams.TYPE_SYSTEM_ALERT,
+            WindowManager.LayoutParams.TYPE_SYSTEM_OVERLAY,
             WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE or
+                    WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE or
                     WindowManager.LayoutParams.FLAG_NOT_TOUCH_MODAL or
-                    WindowManager.LayoutParams.FLAG_WATCH_OUTSIDE_TOUCH,
+                    WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS,
             PixelFormat.TRANSLUCENT
         )
 
+        layoutParams!!.flags = WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE or
+                             WindowManager.LayoutParams.FLAG_NOT_TOUCH_MODAL
         windowManager = getSystemService(Context.WINDOW_SERVICE) as WindowManager
 
         view = layout.inflate(R.layout.layout_filter_mini, null)
