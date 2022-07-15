@@ -22,9 +22,13 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="start mini filter"/>
-
         <Button
             android:id="@+id/button_stop_mini"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="stop mini filter"/>
+        <Button
+            android:id="@+id/button_tap"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="stop mini filter"/>

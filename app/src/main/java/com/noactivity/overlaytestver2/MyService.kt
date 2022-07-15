@@ -83,6 +83,7 @@ class MyService: Service()
         val width = size.x
         val height = size.y
 
+        /*
         layoutParams = WindowManager.LayoutParams(
             WindowManager.LayoutParams.WRAP_CONTENT,
             WindowManager.LayoutParams.WRAP_CONTENT,
@@ -93,6 +94,16 @@ class MyService: Service()
                     WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS,
             PixelFormat.TRANSLUCENT
         )
+         */
+        layoutParams = WindowManager.LayoutParams(
+            WindowManager.LayoutParams.WRAP_CONTENT,
+            WindowManager.LayoutParams.WRAP_CONTENT,
+            WindowManager.LayoutParams.TYPE_SYSTEM_ALERT,
+            WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE or
+                    WindowManager.LayoutParams.FLAG_NOT_TOUCH_MODAL or
+                    WindowManager.LayoutParams.FLAG_WATCH_OUTSIDE_TOUCH,
+            PixelFormat.TRANSLUCENT
+        )
 
         layoutParams!!.flags = WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE or
                              WindowManager.LayoutParams.FLAG_NOT_TOUCH_MODAL
@@ -101,6 +112,8 @@ class MyService: Service()
         view = layout.inflate(R.layout.layout_filter_mini, null)
         view!!.setBackgroundColor(Color.argb(100, 0, 0, 0))
         windowManager!!.addView(view, layoutParams)
+
+        /*
 
         view!!.setOnTouchListener(View.OnTouchListener { v, event ->
             when (event.action)
@@ -114,6 +127,8 @@ class MyService: Service()
             return@OnTouchListener false
 
         })
+
+         */
 
     }
 
