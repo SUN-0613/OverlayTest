@@ -12,7 +12,7 @@
         android:layout_column="0"
         android:id="@+id/button_tap"
         android:layout_width="300dp"
-        android:layout_height="30dp"
+        android:layout_height="330dp"
         android:layout_rowWeight="1" />
     <!--
             android:layout_marginTop="500dp"
