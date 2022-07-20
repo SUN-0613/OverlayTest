@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">OverlayTestVer2</string>
+    <string name="accessibility_service_description">HelloWorld</string>
 </resources>

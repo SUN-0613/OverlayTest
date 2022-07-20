@@ -1,5 +1,6 @@
 package com.noactivity.overlaytestver2
 
+import android.accessibilityservice.AccessibilityService
 import android.app.Service
 import android.content.Context
 import android.content.Intent
@@ -13,10 +14,11 @@ import android.view.LayoutInflater
 import android.view.MotionEvent
 import android.view.View
 import android.view.WindowManager
+import android.view.accessibility.AccessibilityEvent
 import androidx.core.app.ActivityCompat.startActivityForResult
 
 
-class MyService: Service()
+class MyService: AccessibilityService()
 {
 
     private var view: View? = null
@@ -25,11 +27,19 @@ class MyService: Service()
     private var isLongClicked: Boolean = false
 
     /**
-     * サービスをBindして実行する場合は{}内に処理を記述
+     * 初期化
      */
-    override fun onBind(p0: Intent?): IBinder?
+    init
     {
-        return null
+        Instance = this
+    }
+
+    override fun onAccessibilityEvent(event: AccessibilityEvent?) {
+        return
+    }
+
+    override fun onInterrupt() {
+        return
     }
 
     /**
@@ -54,7 +64,7 @@ class MyService: Service()
             }
         }
 
-        addMiniFilter()
+        //addMiniFilter()
         return START_STICKY
 
     }
@@ -150,6 +160,14 @@ class MyService: Service()
     private fun onActionUp()
     {
         isLongClicked = false
+    }
+
+    /**
+     * static
+     */
+    companion object
+    {
+        var Instance: MyService? = null
     }
 
 }

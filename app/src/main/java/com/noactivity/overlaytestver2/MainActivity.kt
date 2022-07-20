@@ -1,11 +1,14 @@
 package com.noactivity.overlaytestver2
 
+import android.accessibilityservice.GestureDescription
 import android.content.Context
 import android.content.Intent
+import android.graphics.Path
 import android.hardware.input.InputManager
 import android.os.Build
 import android.os.Bundle
 import android.os.SystemClock
+import android.provider.Settings
 import android.util.DisplayMetrics
 import android.view.InputDevice
 import android.view.InputEvent
@@ -75,12 +78,18 @@ class MainActivity: AppCompatActivity()
             sendTap()
         })
 
+        val intent2 = Intent(Settings.ACTION_ACCESSIBILITY_SETTINGS)
+        intent2.addFlags(Intent.FLAG_RECEIVER_REGISTERED_ONLY)
+        intent2.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+
+        this.startActivity(intent2)
+
     }
 
     fun sendTap()
     {
 
-        if (isShowOverlay)
+        if (true)
         {
 
             isRun = true
@@ -130,6 +139,8 @@ class MainActivity: AppCompatActivity()
         val downTime = SystemClock.uptimeMillis()
         val eventTime = SystemClock.uptimeMillis() + 1000
 
+        /*
+
         val event1 = MotionEvent.obtain(downTime, eventTime, MotionEvent.ACTION_DOWN, pointX, pointY, 0)
         event1.source = InputDevice.SOURCE_MOUSE
         injectInputEvent(event1)
@@ -139,6 +150,25 @@ class MainActivity: AppCompatActivity()
         val event2 = MotionEvent.obtain(eventTime + 100, eventTime + 2000, MotionEvent.ACTION_UP, pointX, pointY, 0)
         event2.source = InputDevice.SOURCE_MOUSE
         injectInputEvent(event2)
+
+         */
+
+        try
+        {
+
+            val path = Path()
+            path.moveTo(pointX, pointY)
+            val builder = GestureDescription.Builder()
+            val gestureDescription = builder.addStroke(GestureDescription.StrokeDescription(path, 0, 10)).build()
+            MyService.Instance!!.dispatchGesture(gestureDescription, null, null)
+
+            println("Tap OK")
+
+        }
+        catch (e: Exception)
+        {
+            e.printStackTrace()
+        }
 
     }
 
