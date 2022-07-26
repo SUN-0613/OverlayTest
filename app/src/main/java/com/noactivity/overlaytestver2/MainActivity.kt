@@ -60,6 +60,8 @@ class MainActivity: AppCompatActivity()
 
             isShowOverlay = true
 
+            sendTap()
+
         })
 
         findViewById<Button>(R.id.button_stop_mini).setOnClickListener(View.OnClickListener

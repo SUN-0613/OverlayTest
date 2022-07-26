@@ -22,17 +22,18 @@
             android:id="@+id/button_start_mini"
             android:layout_width="100dp"
             android:layout_height="wrap_content"
-            android:text="start mini filter"/>
+            android:text="start"/>
         <Button
             android:id="@+id/button_stop_mini"
             android:layout_width="100dp"
             android:layout_height="wrap_content"
-            android:text="stop mini filter"/>
+            android:text="stop"/>
         <Button
             android:id="@+id/button_tap"
             android:layout_width="100dp"
             android:layout_height="wrap_content"
-            android:text="tap event loop"/>
+            android:text="tap event loop"
+            android:visibility="invisible" />
     </LinearLayout>
     <Button
         android:layout_width="match_parent"
